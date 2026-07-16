@@ -14,12 +14,6 @@
 
 ---
 
-<img src="polyp.jpg" alt="GastroVision Interface Preview" width="100" style="border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); margin: 20px 0;">
-
-</div>
-
----
-
 ## 🌟 Key Features
 
 *   **⚡ Multi-Class Classification**  
