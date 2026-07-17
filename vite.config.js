@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { Resend } from 'resend';
+import { Client } from '@gradio/client';
 
 export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current working directory.
@@ -58,6 +59,35 @@ export default defineConfig(({ mode }) => {
                   
                   res.writeHead(200, { 'Content-Type': 'application/json' });
                   res.end(JSON.stringify(data));
+                } catch (error) {
+                  res.writeHead(500, { 'Content-Type': 'application/json' });
+                  res.end(JSON.stringify({ error: error.message }));
+                }
+              });
+            } else if (req.url === '/api/predict' && req.method === 'POST') {
+              let bodyChunks = [];
+              req.on('data', chunk => {
+                bodyChunks.push(chunk);
+              });
+              req.on('end', async () => {
+                try {
+                  const buffer = Buffer.concat(bodyChunks);
+                  const blob = new Blob([buffer], { type: req.headers['content-type'] || 'image/jpeg' });
+
+                  if (!env.HF_TOKEN) {
+                    throw new Error('HF_TOKEN is not defined in your .env file.');
+                  }
+
+                  const client = await Client.connect("maxiu-uzumaki/gastroVision", {
+                    token: env.HF_TOKEN
+                  });
+
+                  const prediction = await client.predict("/predict", {
+                    image: blob,
+                  });
+
+                  res.writeHead(200, { 'Content-Type': 'application/json' });
+                  res.end(JSON.stringify(prediction));
                 } catch (error) {
                   res.writeHead(500, { 'Content-Type': 'application/json' });
                   res.end(JSON.stringify({ error: error.message }));

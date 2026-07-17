@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { Client } from '@gradio/client'
 import polypImg from './polyp.jpg'
 
 const Icon = ({ name, size = 20, stroke = 1.8 }) => {
@@ -125,26 +124,24 @@ function App() {
   const analyze = async () => {
     if (!file || !file.raw) return;
     setProcessing(true);
-    setStatusMessage('Connecting to AI model...');
+    setStatusMessage('Connecting and running AI inference (may take a moment to wake up the model)...');
     setResult(false);
     setErrors({});
     try {
-      const hfToken = import.meta.env.VITE_HF_TOKEN || import.meta.env.HF_TOKEN;
-      const client = await Client.connect("maxiu-uzumaki/gastroVision", {
-        ...(hfToken ? { token: hfToken } : {}),
-        status_callback: (status) => {
-          if (status.stage === 'building') setStatusMessage('Building Space environment...');
-          else if (status.stage === 'running') setStatusMessage('Model ready. Sending image...');
-          else if (status.stage === 'sleeping') setStatusMessage('Waking up the AI model (ZeroGPU)...');
-          else if (status.stage === 'stopped') setStatusMessage('Starting Space instance...');
-          else if (status.stage === 'error') setStatusMessage('Space encountered an error. Retrying...');
-          else if (status.message) setStatusMessage(status.message);
-        }
+      const response = await fetch('/api/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': file.raw.type || 'image/jpeg'
+        },
+        body: file.raw
       });
-      setStatusMessage('Uploading image and running inference...');
-      const prediction = await client.predict("/predict", {
-        image: file.raw,
-      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || 'Server error during inference.');
+      }
+
+      const prediction = await response.json();
       const parsed = parsePredictions(prediction.data);
       if (parsed.length > 0) {
         setDynamicResults(parsed);
@@ -156,10 +153,8 @@ function App() {
       console.error(err);
       const msg = err.message || '';
       let friendly = msg;
-      if (msg.includes('metadata') || msg.includes('Repository not found') || msg.includes('404')) {
+      if (msg.includes('AI model failed') || msg.includes('502') || msg.includes('504')) {
         friendly = 'The AI Space could not be reached. It may be asleep or still starting up — please try again in a few seconds.';
-      } else if (msg.includes('401') || msg.includes('Unauthorized') || msg.includes('Not authorized')) {
-        friendly = 'Access denied. Please ensure your Hugging Face token has access to this private Space.';
       } else if (msg.includes('network') || msg.includes('fetch') || msg.includes('Failed to fetch')) {
         friendly = 'Network error. Please check your connection and try again.';
       }
