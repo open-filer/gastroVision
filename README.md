@@ -14,28 +14,22 @@
 
 ---
 
-<img src="polyp.jpg" alt="GastroVision Interface Preview" width="800" style="border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); margin: 20px 0;">
-
-</div>
-
----
-
 ## 🌟 Key Features
 
-*   **⚡ Multi-Class Classification**  
-    Automatically detects and classifies findings across six key clinical categories: **Cancer, GERD, GERD Normal, Polyp, Polyp Normal, and Spot**.
+**⚡ Multi-Class Classification**  
+Automatically detects and classifies findings across six key clinical categories: **Cancer, GERD, GERD Normal, Polyp, Polyp Normal, and Spot**.
 
-*   **🌀 Interactive Scanning Radar**  
-    Implements a responsive, simulated scan view driven by an animated CSS conic-gradient radar sweep that activates during active requests.
+**🌀 Interactive Scanning Radar**  
+Implements a responsive, simulated scan view driven by an animated CSS conic-gradient radar sweep that activates during active requests.
 
-*   **🤗 Direct Hugging Face Inference**  
-    Direct API connection using the official `@gradio/client` SDK to query the `maxiu-uzumaki/gastroVision` AI Space on the fly.
+**🤗 Direct Hugging Face Inference**  
+Direct API connection using the official `@gradio/client` SDK to query the `maxiu-uzumaki/gastroVision` AI Space on the fly.
 
-*   **🛡️ Secure Serverless Contact Engine**  
-    Handles doctor and lead inquiries using secure serverless edge functions proxying the **Resend API**, preventing CORS issues and keeping credentials private.
+**🛡️ Secure Serverless Contact Engine**  
+Handles doctor and lead inquiries using secure serverless edge functions proxying the **Resend API**, preventing CORS issues and keeping credentials private.
 
-*   **✨ Premium Tailored UX/UI**  
-    Crafted with a warm-toned neutral color scheme, smooth custom-styled scrollbars, fully responsive bento grid features, and micro-interactions.
+**✨ Premium Tailored UX/UI**  
+Crafted with a warm-toned neutral color scheme, smooth custom-styled scrollbars, fully responsive bento grid features, and micro-interactions.
 
 ---
 
