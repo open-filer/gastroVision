@@ -1,21 +1,51 @@
-MIT License
+Custom Non-Commercial License
 
-Copyright (c) 2026 Kritagya Singh
+Copyright (c) 2026 Kritagya Singh (github.com/open-filer)
+
+1. Definitions
+
+"The Software" refers to the source code, documentation, and any associated
+files contained in this repository.
+
+"Commercial Use" means use of the Software, in whole or in part, with the
+purpose of, or resulting in, commercial or monetary gain, including but not
+limited to: selling, licensing, sublicensing, offering as a paid service,
+using within a product or service that generates revenue, or using on behalf
+of a for-profit entity.
+
+"Licensor" refers to Kritagya Singh (github.com/open-filer), the sole author
+and copyright holder of the Software.
+
+2. Grant of Rights
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+of the Software, to use, copy, modify, merge, publish, and distribute copies
+of the Software for non-commercial purposes only, subject to the following
+conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+  a. The above copyright notice and this license must be included in all
+     copies or substantial portions of the Software.
+
+  b. The Software may not be used, in whole or in part, for any Commercial
+     Use by any party other than the Licensor.
+
+3. Reserved Commercial Rights
+
+The right to use the Software for Commercial Use is reserved exclusively to
+Kritagya Singh (github.com/open-filer). No other individual, organization,
+or entity may use the Software, or any derivative of it, for Commercial Use
+without prior written permission from the Licensor.
+
+4. No Warranty
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE
+USE OF THE SOFTWARE.
+
+5. Termination
+
+Any use of the Software in violation of this license automatically
+terminates the rights granted under Section 2, effective immediately and
+without notice.
